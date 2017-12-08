@@ -1,0 +1,118 @@
+ <ion-view view-title="Info Básica" name="profile-view" hide-nav-bar="false" >
+   <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="profileCtrl" ng-init="load()" style="background-color: black;">
+  <div class="row">
+      <div class="col text-center"> <a ui-sref="profile" href="#/profile"><span class="badge badge-primary">1</span> </a></div>
+      <div class="col text-center"> <a ui-sref="location" href="#/location"><span class="badge badge-light">2</span> </a></div>
+      <div class="col text-center"> <a ui-sref="finance" href="#/finance"><span class="badge badge-light">3</span></a></div>
+      <div class="col text-center"> <a ui-sref="bank" href="#/bank"><span class="badge badge-light">4</span></a></div>
+      <div class="col text-center"> <a ui-sref="resumen_profile" href="#/resumen_profile"><span class="badge badge-light">5</span></a></div>
+  </div>
+  <div class="row">
+    <div class="col text-center"><p class="text-primary no-margin">Actualiza tu información basica</p></div>
+  </div> 
+  <div class="row">
+    <div class="col text-center"><p class="text-primary text-white no-margin">Por favor completa todo el formulario.</p></div>
+  </div>
+  <div class = "list padding-list">
+     <label class = "ionic-item item-input item-stacked-label">
+      <span class = "input-label">Nombres</span>
+      <input type="text" required ng-model="$root.user.name" class="form-control" name="nombres" placeholder="Nombres" />
+   </label>
+   <label class = "ionic-item item-input item-stacked-label">
+      <span class = "input-label">Apellidos</span>
+      <input type="text" required ng-model="$root.user.last_name" class="form-control" name="apellidos" placeholder="Apellidos" />
+   </label>
+   <label class = "ionic-item item-input item-stacked-label">
+      <span class = "input-label">Cédula de ciudadanía</span>
+    <input type="number" required ng-disabled="$root.user.data.updated" ng-init="parseCC()" ng-model="$root.user.cc" class="form-control" name="cedula" placeholder="Cédula de ciudadanía" />
+   </label>
+   <div class="row" style="background-color:white;">
+      <p style="font-size: 16px;color: #505050;padding-left: 10px;">Fecha de nacimiento</p>
+   </div>
+   <div class="row" style="padding:0px;">
+   <label class = "col ionic-item selectize-list-item">
+      <select name="day" id="day" 
+        ng-options="option for option in days"
+        ng-model="$root.user.data.fecha_nacimiento.day" style="width:100%;">
+        <option value="" disabled selected>Día</option>
+      </select>
+   </label>
+    <label class = "col ionic-item selectize-list-item">
+        <select name="month" id="month"
+          ng-options="option for option in months"
+          ng-model="$root.user.data.fecha_nacimiento.month" style="width:100%;">
+           <option value="" disabled selected>Mes</option>
+        </select>
+     </label>
+     <label class = "col ionic-item selectize-list-item">
+        <select name="years" id="years" 
+          ng-options="option for option in years"
+          ng-model="$root.user.data.fecha_nacimiento.year" style="width:100%;">
+           <option value="" disabled selected>Año</option>
+        </select>
+     </label>
+   </div>
+   <div class="row" style="background-color:white;">
+      <p style="font-size: 16px;color: #505050;padding-left: 10px;margin-top: 10px;">Fecha de expedición</p>
+   </div>
+   <div class="row" style="padding:0px;">
+   <label class = "col ionic-item selectize-list-item">
+      <select name="day" id="day" 
+        ng-options="option for option in days"
+        ng-model="$root.user.data.fecha_expedicion.day" style="width:100%;">
+        <option value="" disabled selected>Día</option>
+      </select>
+   </label>
+    <label class = "col ionic-item selectize-list-item">
+        <select name="month" id="month"
+          ng-options="option for option in months"
+          ng-model="$root.user.data.fecha_expedicion.month" style="width:100%;">
+           <option value="" disabled selected>Mes</option>
+        </select>
+     </label>
+     <label class = "col ionic-item selectize-list-item">
+        <select name="years" id="years" 
+          ng-options="option for option in years"
+          ng-model="$root.user.data.fecha_expedicion.year" style="width:100%;">
+           <option value="" disabled selected>Año</option>
+        </select>
+     </label>
+   </div>
+
+   <label class="item-stacked-label selectize-list-item">
+    <span class = "input-label">Ciudad de expedición</span>
+    <ciudad-field required placeholder="Ciudad de expedición" ng-model="$root.user.data.ciudad_expedicion"></ciudad-field>   
+   </label>
+   <label class="item-stacked-label selectize-list-item">
+    <span class = "input-label">Sexo</span>
+     <selectize name="sexo" required config="sexo" options='[{value:"Masculino", text:"Masculino"}, {value:"Femenino", text:"Femenino"}]' ng-model="$root.user.data.sexo"></selectize>     
+   </label>
+     <label class = "ionic-item item-input item-stacked-label">
+        <span class = "input-label">Teléfono celular</span>
+        <input type="number" required ng-model="$root.user.data.phone" class="form-control" name="phone" placeholder="Teléfono celular" />
+     </label>
+     <label class = "ionic-item item-input item-stacked-label" ng-show="$root.user.data._provider == 'FACEBOOK'">
+        <span class = "input-label">Correo electronico</span>
+       <input type="text" required ng-model="$root.user.email" class="form-control" name="email" placeholder="Correo electronico" />
+     </label>
+      <div>
+        <br>
+        <button class="button button-block button-custom" ng-click="go_to_location()">
+          SIGUIENTE
+        </button>
+      </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarco Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>

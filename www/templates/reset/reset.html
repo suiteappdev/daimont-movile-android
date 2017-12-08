@@ -1,0 +1,36 @@
+ <ion-view view-title="Cambiar Clave" name="reset-view" hide-nav-bar="false" >
+   <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="passwordResetCtrl" style="background-color: black;">
+  <div class = "list padding-list">
+        <form name="resetForm" novalidate>
+           <label class = "ionic-item item-input item-stacked-label">
+            <span class = "input-label">Nueva Contraseña</span>
+            <input type="password" required ng-model="form.data.newpwd" class="form-control" name="newpwd" placeholder="Nueva Contraseña" />
+         </label>
+         <label class = "ionic-item item-input item-stacked-label">
+            <span class = "input-label">Confirmar Contraseña</span>
+            <input type="password" required ng-model="form.data.confirmpwd" class="form-control" required name="confirmpwd"  placeholder="Confirmar Contraseña" />
+         </label> 
+        </form>
+      <div>
+        <br>
+        <button class="button button-block button-custom"  ng-click="reset()">
+          CAMBIAR
+        </button>
+      </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarko Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>
+
+

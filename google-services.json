@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1066518783470",
+    "firebase_url": "https://daimont-1e3b5.firebaseio.com",
+    "project_id": "daimont-1e3b5",
+    "storage_bucket": "daimont-1e3b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066518783470:android:86d6a701e5a5f5e6",
+        "android_client_info": {
+          "package_name": "com.suiteapp.daimont"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066518783470-ldj4tlvmf65n3tnb29sk7u39u6ugmv0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4Uwg1lGgdQvv0Pppn3HOIpw5DZ8H18g8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

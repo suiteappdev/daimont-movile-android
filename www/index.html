@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/sweetalert/dist/sweetalert.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/selectize/dist/css/selectize.default.css ">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/sifter/sifter.js"></script>
+    <script src="lib/microplugin/src/microplugin.js"></script>
+    <script src="lib/selectize/dist/js/selectize.js"></script>
+    <script src="lib/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <script src="lib/moment/min/locales.min.js"></script>
+    <script src="lib/ionic-modal-select/dist/ionic-modal-select.min.js"></script>
+    <script src="lib/angular-preload-image/angular-preload-image.min.js"></script>
+    <script src="lib/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+    <script src="lib/nouislider/distribute/nouislider.min.js"></script>
+    <script src="lib/angular-selectize2/dist/angular-selectize.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+    <script src="cordova.js"></script>
+
+   
+
+  </head>
+  <body ng-app="starter" spThemable ng-controller="MainCtrl">
+     <ion-side-menus enable-menu-with-back-views="false">
+
+        <ion-side-menu-content drag-content="false">
+          <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+
+          <ion-nav-view></ion-nav-view>
+        </ion-side-menu-content> 
+
+        <ion-side-menu side="left">
+            <ion-content>
+                <ion-list >
+                    <div ng-show="$root.user" style="width:100%;padding: 10px;" class="text-center">
+                        <img style="height: 40px;border-radius:50%;" ng-show="$root.user.data.picture" ng-src="{{$root.user.data.picture}}">
+                        <img style="height: 40px;border-radius:50%;" ng-show="!$root.user.data.picture" class="rounded-circle img-raised" ng-src="img/user.png"> 
+                        <p class="text-center text-white" style="font-weight: 600;">{{$root.user.name + ' ' + $root.user.last_name}}</p>
+                    </div>
+                     <ion-item class="item-shadow" ng-hide="$root.user" ng-href="#/home">
+                        <i style="font-size:18px;" class="icon ion-ios-home-outline"></i>&nbsp;&nbsp;Inicio
+                    </ion-item>
+                     <ion-item ng-show="!$root.user" class="item-shadow" ng-href="#/aboutus">
+                        <i style="font-size:18px;" class="icon ion-ios-people-outline"></i>&nbsp;&nbsp;¿Quiénes Somos?
+                     </ion-item>
+
+                     <ion-item ng-show="!$root.user" class="item-shadow" ng-href="#/requirements">
+                        <i style="font-size:18px;" class="icon ion-ios-list-outline"></i>&nbsp;&nbsp;Requisitos
+                    </ion-item>
+
+                     <ion-item ng-show="!$root.user" class="item-shadow" ng-href="#/terms">
+                        <i style="font-size:18px;" class="icon ion-ios-box-outline"></i>&nbsp;&nbsp;Términos y Condiciones
+                    </ion-item>
+
+                     <ion-item class="item-shadow" ng-hide="!$root.user.data.updated" ng-href="#/dashboard/home">
+                        <i style="font-size:18px;" class="icon ion-ios-home-outline"></i>&nbsp;&nbsp;Mi Préstamo
+                    </ion-item>
+
+                     <ion-item class="item-shadow" ng-hide="!$root.user" ng-href="#/profile">
+                        <i style="font-size:18px;" class="icon  ion-ios-person-outline"></i>&nbsp;&nbsp;Mis Datos
+                    </ion-item>
+
+                     <ion-item class="item-shadow" ng-click="$root.update_cupon()" ng-show="$root.cupon > 0" href="#">
+                        <i style="font-size:18px;" class="icon ion-search"></i> &nbsp;&nbsp;Aumentar Cupon
+                     </ion-item>
+
+                    <ion-item class="item-shadow" ng-show="($root.user && $root.user.data._provider != 'FACEBOOK')" ui-sref="reset" href="#/reset">
+                        <i style="font-size:18px;" class="icon ion-ios-gear-outline"></i>&nbsp;&nbsp;Cambiar Clave
+                    </ion-item>
+
+                    <ion-item class="item-shadow" ng-hide="!$root.user"  ng-click="$root.logout()" href="#"><i style="font-size:18px;" class="icon ion-log-out"></i>&nbsp;&nbsp;Salir</ion-item>                    
+                </ion-list>
+          </ion-content>
+        </ion-side-menu>
+      </ion-side-menus>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    <script src="js/controllers/login.js"></script>
+    <script src="js/controllers/simulator.js"></script>
+    <script src="js/controllers/profile.js"></script>
+    <script src="js/controllers/history.js"></script>
+    <script src="js/controllers/register.js"></script>
+    <script src="js/controllers/dashboard.js"></script>
+    <script src="js/controllers/comment.js"></script>
+    <script src="js/controllers/options.js"></script>
+    <script src="js/controllers/password_reset.js"></script>
+    <script src="js/controllers/setting.js"></script>
+    <script src="js/controllers/request.js"></script>
+    <script src="js/controllers/clienteCtrl.js"></script>
+    <script src="js/statics/departamentos.js"></script>
+    <script src="js/statics/municipios.js"></script>
+    <script src="js/services/services.js"></script>
+    <script src="js/constants/constants.js"></script>
+    <script src="js/directives/location.js"></script>
+    <script src="js/directives/bank.js"></script>
+    <script src="js/directives/reader.js"></script>
+    <script src="js/directives/alert.js"></script>
+    <script src="js/directives/slider.js"></script>
+    <script src="js/filters/moments.js"></script>
+    <script src="js/services/account.js"></script>
+    <script src="js/services/modal.js"></script>
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/statics/selectize_plugins.js"></script>
+    <script src="http://181.54.214.104:8080/socket.io/socket.io.js"></script>
+  </body>
+</html>

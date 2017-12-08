@@ -1,0 +1,137 @@
+ <ion-view view-title="Resumen" name="resumen-view" hide-nav-bar="false" >
+    <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="profileCtrl" ng-init="load()" style="background-color: black;">
+  <div class="row">
+      <div class="col text-center"> <a ui-sref="profile" href="#/profile"><span class="badge badge-light">1</span> </a></div>
+      <div class="col text-center"> <a ui-sref="location" href="#/location"><span class="badge badge-light">2</span> </a></div>
+      <div class="col text-center"> <a ui-sref="finance" href="#/finance"><span class="badge badge-light">3</span></a></div>
+      <div class="col text-center"> <a ui-sref="bank" href="#/bank"><span class="badge badge-light">4</span></a></div>
+      <div class="col text-center"> <a ui-sref="resumen_profile" href="#/resumen_profile"><span class="badge badge-primary">5</span></a></div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+        <span class="badge badge-primary">RESUMEN</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center"><p class="text-primary text-white no-margin">Antes de finalizar verifica tu perfil de crédito.</p></div>
+  </div>
+  <div class = "list padding-list">
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Nombres</span>
+     <p class="text-gray">{{$root.user.name || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Sexo</span>
+     <p class="text-gray">{{$root.user.data.sexo || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Cédula de ciudadanía</span>
+     <p class="text-gray">{{$root.user.cc || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Teléfono</span>
+     <p class="text-gray">{{$root.user.data.phone || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Email</span>
+     <p class="text-gray">{{$root.user.email || 'No Definido'}}</p>
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Departamento</span>
+     <p class="text-gray">{{$root.user.data.departamento || 'No Definido'}}</p>
+   </label> 
+      </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Ciudad</span>
+     <p class="text-gray">{{$root.user.data.ciudad || 'No Definido'}}</p>
+   </label>    
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Fecha de nacimiento</span>
+     <p class="text-gray">Día {{$root.user.data.fecha_nacimiento.day}} Mes {{$root.user.data.fecha_nacimiento.day}} del Año {{$root.user.data.fecha_nacimiento.year}}</p>
+   </label>    
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Fecha de expedición</span>
+     <p class="text-gray">Día {{$root.user.data.fecha_expedicion.day}} Mes {{$root.user.data.fecha_expedicion.day}} del Año {{$root.user.data.fecha_expedicion.year}}</p>
+   </label>    
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Nivel de Estudio</span>
+     <p class="text-gray">{{$root.user.data.nivel_estudio || 'No Definido'}}</p>
+   </label>    
+   </label> 
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Perfil actual</span>
+     <p class="text-gray">{{$root.user.data.perfil_actual || 'No Definido'}}</p>
+   </label>
+   </label> 
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Ocupación</span>
+     <p class="text-gray">{{$root.user.data.ocupacion || 'No Definido'}}</p>
+   </label>  
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-labeluser.">Tipo de Vivienda</span>
+     <p class="text-gray">{{$root.user.data.tipo_vivienda || 'No Definido'}}</p>
+   </label>    
+   </label> 
+      <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Estrato</span>
+     <p class="text-gray">{{$root.user.data.estrato || 'No Definido'}}</p>
+   </label>    
+   </label> 
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Ingresos</span>
+     <p class="text-gray">{{$root.user.data.ingresos_totales || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Egresos</span>
+     <p class="text-gray">{{$root.user.data.egresos_totales || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Cuentas bancarias</span>
+     <p class="text-gray">{{$root.user.data.numero_cuentas_bancaria || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Tarjeta de crédito</span>
+     <p class="text-gray">{{$root.user.data.tarjeta_credito || 'No Definido'}}</p>
+   </label>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Tipo de Cuenta</span>
+     <p class="text-gray">{{$root.user.data.tipo_cuenta || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Banco</span>
+     <p class="text-gray">{{$root.user.data.banco_desembolso || 'No Definido'}}</p>
+   </label>
+   <label class="item-stacked-label selectize-list-item text-center">
+      <span class = "input-label">Número de cuenta</span>
+     <p class="text-gray">{{$root.user.data.numero_cuenta || 'No Definido'}}</p>
+   </label>
+
+  <div>
+    <br>
+    <button class="button button-block button-custom" ng-click="update()" >
+      FINALIZAR
+    </button>        
+    <button class="button button-block button-custom" ng-click="go_back()">
+      ANTERIOR
+    </button>
+  </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarco Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>

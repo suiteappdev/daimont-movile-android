@@ -1,0 +1,42 @@
+ <ion-view view-title="Nueva Solicitud" name="tab-new">
+  <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding"  ng-controller="dashboardCtrl" ng-init="load()" style="background-color: black;">
+	<div class="col"><p ng-hide="hide_offert"  class="simulator-warning animated bounce text-warning noselect" ng-show="with_offer"><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i> Nuestro sistema te ha asignado un cupo máximo de <strong>{{$root.user.data.cupon | currency:"$":0}}</strong> pesos. Si estás de acuerdo solicita un crédito nuevo, teniendo en cuenta este monto.</p></div>
+	<br>
+		<div class = "row">
+		   <div class = "col">
+		   		<p class="text-white text-center" style="font-size: 18px;">¿Cúanto dinero necesitas?</p>
+				<div class="row">
+					<div class="col"></div>
+					<div class="col text-right"><p class="text-primary" style="font-size:18px;">{{form.data.amount[0] || 0 | currency:"$ " }}</p></div>
+				</div>
+    			<slider step="50000" instance="amount_instance" id="amount" ng-model="form.data.amount" initial="{{$root.user.data.cupon}}" range="[100000, $root.user.data.cupon || 500]"></slider>               
+		    </div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<div class = "row">
+		   		<div class = "col">
+		   		<p class="text-white text-center" style="font-size: 18px;">¿Cúando puedes pagar?</p>
+				<div class="row">
+					<div class="col"></div>
+					<div class="col text-right"><p class="text-primary" style="font-size:18px;" ng-init="form.data.date = currentDate">{{'En ' + form.data.days }} <span class="text-white">dias.</span></p></div>
+				</div>
+    			<slider step="1" instance="days_instance" ng-model="form.data.days" initial="15" range="[1, 30]"></slider>            
+		    </div>
+		</div>
+		<br />
+		<div class="row">
+			<button style="margin-top:20px;" ng-disabled="current_credit" class="button button-block button-custom" ng-click="go_to('new_resumen', form)">SIGUIENTE</button>
+		</div
+  </ion-content>
+</ion-view>
+

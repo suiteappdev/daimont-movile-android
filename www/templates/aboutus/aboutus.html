@@ -1,0 +1,39 @@
+ <ion-view view-title="Conóceme..." name="home-app-view" hide-nav-bar="true" >
+  <div class="bar bar-header-transparent">
+    <button class="button button-icon icon ion-android-menu text-white" ng-click="toggleLeft()"></button>
+    <div class="h1 title">Conóceme...</div>
+    <a ui-sref="login" href="#/login" class="button button-icon icon ion-ios-person-outline text-white"></a>
+  </div>
+  <ion-content  class="bg-home" ng-controller="registerCtrl" scroll="false">
+  <div class="list has-header">
+  <p class="padding text-white animateXMark" style="margin-top: 100px;border-left: 5px solid #0b8072;padding-left: 20px;color:#cac8c8;">Daimont S.A.S es una plataforma virtual que te da cupos de crédito de una manera fácil, rápida, segura, y sin papeleos. </p>
+    <div class="home-call-to-action text-center animated fadeInUp" style="top: 20px;!important;">
+      <p class="text-white" style="font-size: 18px;margin-bottom:34px;"><span style="font-weight: lighter;color:#d8d5d5">Listo,</span> &nbsp;¡solicita tu préstamo! ya</p>
+      <a ng-href="#/simulator"><button class="button button-rounded button-start button-outline button-small button-light icon-right ion-log-in">
+        Comenzar
+      </button></a>   
+    </div>
+  </div>
+  <div class = "bar bar-footer bar-footer-transparent">
+      <div class="row">
+        <div class="col text-center">
+            <a ng-href="#/simulator"><button class="button button-float-warning button-home">
+              <i class="icon ion-plus"></i>
+            </button></a>
+            <p class="text-white button-bottom-text">Solicitar préstamo</p>
+        </div>
+        <div class="col text-center">
+            <a ng-href="#/aboutus"><button class="button button-float button-home">
+              <i class="icon ion-ios-people"></i>
+            </button></a>
+            <p class="text-white button-bottom-text">¿Quiénes somos?</p>
+        </div>
+        <div class="col text-center">
+            <a ng-href="#/requirements"><button class="button button-float button-home">
+              <i class="icon ion-clipboard"></i>
+            </button></a>
+            <p class="text-white button-bottom-text">Requisitos</p>
+        </div>
+      </div>
+  </div>
+</ion-view>

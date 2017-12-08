@@ -1,0 +1,56 @@
+<ion-view view-title="Carrito">
+<div ng-controller="dashboardCtrl">
+    <ion-content style="background-color: #F1F1F1;background-image:url('img/background-content.png')">
+     <div class="content has-header padding" ng-show="$root.shoppingCart.length == 0">
+        <div class="padding-example text-center">
+          <div>
+            <i style="font-size: 100px;color:#C5C5C5" class="icon ion-information-circled"></i>
+            <p>No existen productos</p>
+           <a ng-click="toDashboard()" style="color:#848484;font-size:18px;text-decoration:none;" href=""><i style="color: orange;margin-right: 7px;" class="icon ion-reply"></i>Regresar</a>
+          </div>
+        </div>
+      </div>
+        <ion-list ng-controller="dashboardCtrl"
+                  show-delete="shouldShowDelete"
+                  show-reorder="shouldShowReorder"
+                  can-swipe="listCanSwipe">
+          <ion-item on-double-tap="remove(record)" ng-repeat="record in $root.shoppingCart"
+                    class="item-thumbnail-left">
+
+           <img preload-image ng-src="{{record.gallery[0].URL}}" default-image="img/missing-product.png" fallback-image="img/missing-product.png" />
+            <h2>{{record.producto}}</h2>
+            <p>{{record.descripcion}}</p>
+            <div class="row" style="padding:0px;">
+              <div class="col" style="padding:0px;font-size:12px;">
+                <span class="" style="font-size:12px;color:#f1c504"><strong style="font-family: monospace;">{{record.precio_VentaFacturado || record.precio_venta || record.precio_venta || 0 | currency:"$ "}}&nbsp;</strong></span>
+              </div>
+            </div>
+              <div class="qty" style="position: absolute;top: -12px;left: 36px;">
+                <span class="badge badge-positive" style="position: relative;float: left;">{{record.cantidad}}</span>
+              </div>
+            <ion-option-button class="button-custom"
+                               ng-click="tallas()">
+              Tallas - Cantidades
+            </ion-option-button>
+            <ion-option-button class="button-custom"
+                               ng-click="materiales()">
+              Personalizar
+            </ion-option-button>
+            <ion-delete-button class="ion-minus-circled"
+                               ng-click="items.splice($index, 1)">
+            </ion-delete-button>
+            <ion-reorder-button class="ion-navicon"
+                                on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+            </ion-reorder-button>
+          </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar style="height:60px!important;" ng-hide="$root.shoppingCart.length == 0" align-title="left">
+      <div class="row">
+          <div class="col">
+            <button style="margin:0px;" ng-click="formInfo('OP')" class="button button-custom icon ion-paper-airplane button button-block">Pedir</button>
+          </div>
+      </div>
+    </ion-footer-bar>  
+</div>
+</ion-view>

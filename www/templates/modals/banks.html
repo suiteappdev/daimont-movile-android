@@ -1,0 +1,55 @@
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Realiza una transferencia o consignación</h1>
+    </ion-header-bar>
+    <ion-content>
+	   <ul class="list">
+	   	   <label class="item-stacked-label selectize-list-item">
+	    <span class = "input-label">¿Donde pagarás?</span>
+        <banks-field
+	          placeholder="Elije un banco"
+	          key="name"
+	          set-object="$root.bank_obj" 
+	          label="name"
+	          ng-model="$root.banco">
+        </banks-field>   
+	   </label>
+	   <div ng-show="bank_obj">
+		   	<li class="ionic-item" style="padding: 5px 5px 5px 5px!important;">
+		 	 <div class = "row">
+			   	<div class = "col text-black text-center"><strong>Número de Cuenta</strong></div>
+			   	<div class = "col text-black text-center"><strong>{{bank_obj.account}}</strong></div>
+			 </div>
+		    </li>
+		   	<li class="ionic-item" style="padding: 5px 5px 5px 5px!important;">
+		 	 <div class = "row">
+			   	<div class = "col text-black text-center"><strong>Titular de la Cuenta</strong></div>
+			   	<div class = "col text-black text-center"><strong style="font-size:12px;">{{bank_obj.owner}}</strong></div>
+			 </div>
+		    </li>	 
+		   	<li class="ionic-item" style="padding: 5px 5px 5px 5px!important;">
+		 	 <div class = "row">
+			   	<div class = "col text-black text-center"><strong>Tipo de Cuenta</strong></div>
+			   	<div class = "col text-black text-center"><strong>{{bank_obj.type}}</strong></div>
+			 </div>
+		    </li>
+		   	<li class="ionic-item" style="padding: 5px 5px 5px 5px!important;" ng-show="bank_obj.cc">
+		 	 <div class = "row">
+			   	<div class = "col text-black text-center"><strong>Cedula de Ciudadania</strong></div>
+			   	<div class = "col text-black text-center"><strong>{{bank_obj.account}}</strong></div>
+			 </div>
+		    </li>
+		   	<li class="ionic-item" style="padding: 5px 5px 5px 5px!important;" ng-show="bank_obj.nit">
+		 	 <div class = "row">
+			   	<div class = "col text-black text-center"><strong>NIT</strong></div>
+			   	<div class = "col text-black text-center"><strong>{{bank_obj.nit}}</strong></div>
+			 </div>
+		    </li>
+			<button class="button button-full button-custom" ng-click="closeModal()">
+			  Confirmo que he elejido un banco donde pagar.
+			</button>	   	
+	   </div>
+		    	
+	   </ul>
+    </ion-content>
+  </ion-modal-view>

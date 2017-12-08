@@ -1,0 +1,29 @@
+ <ion-view view-title="Empezar" name="empezar-view" hide-nav-bar="true" >
+  <ion-content class="padding register-background" ng-controller="simulatorCtrl" ng-init="load()" style="background-color:black;">
+	<section class="login-container">
+	    <div class = "col header text-center">
+	       <a bg-href="#/home"><img src="./img/ionic.png" class = "simulator-logo" /></a>
+	    </div>
+	</section>
+	<br>
+	<div class="row">
+		<div class="col text-center"><p class="text-primary">¿ES TU PRIMER PRÉSTAMO?</p></div>
+	</div>
+	<div class="row text-center">
+		<div class="col">
+			<p class="text-white">Si es tu primer préstamo registrate.</p>
+			<a style="margin-top:20px;" class="button button-block button-custom" href="#/register" ui-sref="register">REGISTRATE</a>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="row text-center">
+		<div class="col">
+			<div class="col text-center"><p class="text-primary">¿SOY CLIENTE?</p></div>
+			<p class="text-white">Si eres cliente ingresa con tus credenciales.</p>
+			<a style="margin-top:20px;" class="button button-block button-custom" href="#/login" ui-sref="login">ENTRAR</a>		
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

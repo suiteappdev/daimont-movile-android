@@ -1,0 +1,74 @@
+ <ion-view view-title="Info Laboral" name="finance-view" hide-nav-bar="false" >
+    <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="profileCtrl" ng-init="load()" style="background-color: black;">
+  <div class="row">
+      <div class="col text-center"> <a ui-sref="profile" href="#/profile"><span class="badge badge-light">1</span> </a></div>
+      <div class="col text-center"> <a ui-sref="location" href="#/location"><span class="badge badge-light">2</span> </a></div>
+      <div class="col text-center"> <a ui-sref="finance" href="#/finance"><span class="badge badge-primary">3</span></a></div>
+      <div class="col text-center"> <a ui-sref="bank" href="#/bank"><span class="badge badge-light">4</span></a></div>
+       <div class="col text-center"> <a ui-sref="resumen_profile" href="#/resumen_profile"><span class="badge badge-light">5</span></a></div>
+  </div>
+  <div class="row">
+    <div class="col text-center"><p class="text-primary no-margin">Actualiza tu información financiera</p></div>
+  </div> 
+  <div class="row">
+    <div class="col text-center"><p class="text-primary text-white no-margin">Por favor completa todo el formulario.</p></div>
+  </div>
+  <div class = "list padding-list">
+     <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Nivel de estudio</span>
+       <selectize required config="nivel_estudio" options='[{value:"Básica primaria", text:"Básica primaria"}, {value:"Bachiller", text:"Bachiller"}, {value:"Técnico", text:"Técnico"},  {value:"Tecnólogo", text:"Tecnólogo"}, {value:"Profesional", text:"Profesional"}]' ng-model="$root.user.data.nivel_estudio"></selectize>
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Actualmente soy</span>
+       <selectize required config="role" options='[ {value:"Estudiante", text:"Estudiante"},  {value:"Empleado", text:"Empleado"}, {value:"Independiente", text:"Independiente"},{value:"Desempleado", text:"Desempleado"}, {value:"Pensionado", text:"Pensionado"}]' ng-model="$root.user.data.perfil_actual"></selectize>
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Ingresos mensuales</span>
+      <selectize 
+        required 
+        config="ingresos_setup" options='ingresos_records' 
+        ng-model="$root.user.data.ingresos_totales">
+      </selectize>
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Egresos mensuales</span>
+    <selectize 
+      required 
+      config="egresos_setup" options='egresos_records' 
+      ng-model="$root.user.data.egresos_totales" >
+    </selectize>    
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Ocupación actual</span>
+        <selectize 
+          required 
+          placeholder="Escribe tu ocupación actual"
+          config="ocupacion_setup" options='ocupacion_records' 
+          ng-model="$root.user.data.ocupacion" >
+        </selectize> 
+        <span style="font-size: 10px;color: #a0a0a0;position: relative;top: -11px;"><i class="now-ui-icons business_bulb-63"></i>Si no aparece tu ocupación por favor escríbela.</span>  
+   </label>
+      <div>
+        <br>
+        <a class="button button-block button-custom" ui-sref="bank()" href="#/bank">
+          SIGUIENTE
+        </a>        
+        <button class="button button-block button-custom" ng-click="go_back()">
+          ANTERIOR
+        </button>
+      </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarco Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+ <ion-view view-title="Info Residencial" name="location-view" hide-nav-bar="false" >
+    <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="profileCtrl" ng-init="load()" style="background-color: black;">
+  <div class="row">
+      <div class="col text-center"> <a ui-sref="profile" href="#/profile"><span class="badge badge-light">1</span> </a></div>
+      <div class="col text-center"> <a ui-sref="location" href="#/location"><span class="badge badge-primary">2</span> </a></div>
+      <div class="col text-center"> <a ui-sref="finance" href="#/finance"><span class="badge badge-light">3</span></a></div>
+      <div class="col text-center"> <a ui-sref="bank" href="#/bank"><span class="badge badge-light">4</span></a></div>
+      <div class="col text-center"> <a ui-sref="resumen_profile" href="#/resumen_profile"><span class="badge badge-light">5</span></a></div>
+  </div>
+  <div class="row">
+    <div class="col text-center"><p class="text-primary no-margin">Actualiza tu información residencial</p></div>
+  </div> 
+  <div class="row">
+    <div class="col text-center"><p class="text-primary text-white no-margin">Por favor completa todo el formulario.</p></div>
+  </div>
+  <div class = "list padding-list">
+     <label  class="item-stacked-label selectize-list-item">
+      <span class = "input-label">Departamento</span>
+       <departamento-field required ng-model="$root.user.data.departamento"></departamento-field>
+   </label>
+   <label class="item-stacked-label selectize-list-item">
+      <span class = "input-label">Ciudad</span>
+      <ciudad-field required ng-model="$root.user.data.ciudad"></ciudad-field>
+   </label>
+   <label class = "ionic-item item-input item-stacked-label">
+      <span class = "input-label">Dirección residencial</span>
+    <input type="text" required class="form-control" ng-model="$root.user.data.direccion" name="direccion_residencial" placeholder="Dirección residencial" />        
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Tipo de vivienda</span>
+     <selectize required name="vivienda" config="vivienda" options='[{value:"Propia", text:"Propia"}, {value:"Familiar", text:"Familiar"},  {value:"Arrendado", text:"Arrendado"}]' ng-model="$root.user.data.tipo_vivienda"></selectize> 
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Estrato</span>
+    <selectize name="estrato" required config="estrato" options='[{value:"1", text:"1"}, {value:"2", text:"2"},  {value:"3", text:"3"},  {value:"4", text:"4"},  {value:"5 o más", text:"5 o más"}]' ng-model="$root.user.data.estrato"></selectize>
+   </label>
+      <div>
+        <br>
+        <a class="button button-block button-custom" ui-sref="finance()" href="#/finance">
+          SIGUIENTE
+        </a>
+        <button class="button button-block button-custom" ng-click="go_back()">
+          ANTERIOR
+        </button>
+      </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarco Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,68 @@
+ <ion-view view-title="Info Bancaria" name="bank-view" hide-nav-bar="false" >
+    <ion-nav-bar class="nav-title-slide-ios7" align-title="center">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+          <button style="background-color: #080808;font-size: 36px;" class="button text-white ion-navicon button-balanced" ng-click="toggleLeft()">
+          </button>
+        </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding" ng-controller="profileCtrl" ng-init="load()" style="background-color: black;">
+  <div class="row">
+      <div class="col text-center"> <a ui-sref="profile" href="#/profile"><span class="badge badge-light">1</span> </a></div>
+      <div class="col text-center"> <a ui-sref="location" href="#/location"><span class="badge badge-light">2</span> </a></div>
+      <div class="col text-center"> <a ui-sref="finance" href="#/finance"><span class="badge badge-light">3</span></a></div>
+      <div class="col text-center"> <a ui-sref="bank" href="#/bank"><span class="badge badge-primary">4</span></a></div>
+      <div class="col text-center"> <a ui-sref="resumen_profile" href="#/resumen_profile"><span class="badge badge-light">5</span></a></div>
+  </div>
+  <div class="row">
+    <div class="col text-center"><p class="text-primary no-margin">Actualiza tu información bancaria</p></div>
+  </div> 
+  <div class="row">
+    <div class="col text-center"><p class="text-primary text-white no-margin">Por favor completa todo el formulario.</p></div>
+  </div>
+  <div class = "list padding-list">
+     <label  class="item-stacked-label selectize-list-item">
+      <span class = "input-label">¿Cuántas cuentas bancarias tiene usted?</span>
+       <selectize required config="cuentas_bancarias" options='[{value:"1", text:"1"}, {value:"2", text:"2"}, {value:"3", text:"3"}, {value:"4 o Más", text:"4 o Más"}]' ng-model="$root.user.data.numero_cuentas_bancaria"></selectize>
+   </label>
+   <label class="item-stacked-label selectize-list-item">
+      <span class = "input-label">¿Tiene tarjetas de crédito?</span>
+      <selectize required config="tarjetas_credito" options='[{value:"Si", text:"Si"}, {value:"No", text:"No"}]' ng-model="$root.user.data.tarjeta_credito"></selectize>
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Banco donde recibirás el dinero</span>
+      <banks-field
+          required
+          placeholder="Banco donde recibirás el dinero"
+          key="name" 
+          show-all="true"
+          label="name"
+          ng-model="$root.user.data.banco_desembolso">
+      </banks-field>       
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Tipo de cuenta</span>
+       <selectize required config="tipo_cuenta" options='[{value:"Ahorros", text:"Ahorros"}, {value:"Corriente", text:"Corriente"}]' ng-model="$root.user.data.tipo_cuenta"></selectize>
+   </label>
+   <label class = "item-stacked-label selectize-list-item">
+      <span class = "input-label">Numero de cuenta</span>
+      <input type="number" required ng-model="$root.user.data.numero_cuenta" class="form-control" placeholder="Número de cuenta" >
+      <span style="font-size: 10px;color: #a0a0a0;position: relative;"><i class="now-ui-icons business_bulb-63"></i>Escribir el número sin puntos o guiones.</span>
+   </label>
+      <div>
+        <br>
+        <a class="button button-block button-custom" ui-sref="resumen_profile()" href="#/resumen_profile">
+          SIGUIENTE
+        </a>
+        <button class="button button-block button-custom" ng-click="go_back()">
+          ANTERIOR
+        </button>
+      </div>
+</div>
+    <div class="col" style="position: relative;bottom: -90px;">
+      <p style="color:white;text-align:center;margin-bottom: 2px;font-weight: lighter;">&copy; Daimont</p>
+      <p style="color:white;text-align:center;">Zarco Technologies</p>
+    </div>
+  </ion-content>
+</ion-view>

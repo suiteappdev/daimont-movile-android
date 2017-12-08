@@ -1,0 +1,41 @@
+ <ion-view view-title="Resumen" name="resumen-view" hide-nav-bar="true" >
+  <ion-content class="padding login-background" ng-controller="simulatorCtrl" ng-init="load()" style="background-color:black;">
+	<section class="login-container">
+	    <div class = "col header text-center">
+	       <a ng-href="#/home" ><img src="./img/ionic.png" class = "simulator-logo" /></a>
+	    </div>
+	</section>
+	<br>
+	<div class="row">
+		<div class="col text-center"><p class="text-primary">RESUMEN DEL PRÉSTAMO</p></div>
+	</div>
+		<div class = "row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+		   <div class = "col"><p class="text-white"><i class = "icon icon ion-calendar"></i> Fecha de Pago</p></div>
+		   <div class = "col"><p class="text-white text-right" style="text-transform: capitalize;">{{ form.data.pay_day || current_date | moment: 'format': 'MMMM DD, YYYY' }}</p></div>
+		</div>
+		<div class="row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+		   <div class = "col"><p class="text-white">Monto Solicitado</p></div>
+		   <div class = "col"><p class="text-white text-right">{{ form.data.amount[0] | currency:"$ ":0}}</p></div>			
+		</div>
+		<div class="row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+		   <div class = "col"><p class="text-white">Interés</p></div>
+		   <div class = "col"><p class="text-white text-right">{{ form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0 }}</p></div>			
+		</div>
+		<div class="row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+	   		<div class = "col"><p class="text-white">Gestión de Crédito</p></div>
+	   		<div class = "col"><p class="text-white text-right">{{form.data.system_quote | currency:"$ ":0 }}</p></div>			
+		</div>
+		<div class="row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+	   		<div class = "col"><p class="text-white">Iva</p></div>
+	   		<div class = "col"><p class="text-white text-right">{{form.data.ivaDays || form.data.iva || 0 | currency:"$ ":0 }}</p></div>			
+		</div>
+		<div class="row" style="border-bottom: 2px solid #3c3b3b;margin-bottom: 5px;">
+	   		<div class = "col"><p class="text-white">Total a Pagar</p></div>
+	   		<div class = "col"><p class="text-white text-right"><strong>{{form.data.total_payment || 0 | currency:"$ ":0}} COP</strong></p></div>			
+		</div>
+
+		<div class="row">
+			<button style="margin-top:20px;" class="button button-block button-custom" ng-click="go_to('start', form)">SOLICITAR PRÉSTAMO</button>
+		</div>
+  </ion-content>
+</ion-view>
