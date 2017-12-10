@@ -1,0 +1,57 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-bluetooth-printer": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.suiteapp.daimont"
+    }
+  },
+  "dependent_plugins": {}
+}

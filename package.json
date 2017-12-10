@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "Daimont android project",
   "dependencies": {
+    "cordova-android": "^6.3.0",
     "cordova-plugin-firebase": "^0.1.19",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
@@ -39,6 +40,8 @@
     "plugins": {
       "cordova-plugin-firebase": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }

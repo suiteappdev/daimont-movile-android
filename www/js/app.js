@@ -12,16 +12,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       $rootScope.client_metadata = res || {};
     });
 
-    try{
-          window.FirebasePlugin.getToken(function(token) {
-              alert(token);
-          }, function(error) {
-              console.error(error);
-          }); 
-          
-    }catch(e){
 
-    }
 
     $ionicPlatform.ready(function(){
       navigator.splashscreen.hide();

@@ -36,6 +36,26 @@ angular.module('starter.controllers').controller('registerCtrl', function($scope
 
       var _success = function(data){
         if(data){
+            try{
+                window.FirebasePlugin.getToken(function(token) {
+                  api.user().add("new_device/" + data._id).post({
+                    device_token : token,
+                    device_type : "Android"
+                  }).success(function(res){
+                    if(res){
+
+                    }
+                  });
+                    // save this server-side and use it to push notifications to this device
+                    alert(token);
+                }, function(error) {
+                    alert(error);
+                });
+                  
+            }catch(e){
+              alert(e)
+            }
+
             var confirmPopup = $ionicPopup.confirm({
                    title: 'Cuenta creada.',
                    template: 'Por favor ingresa con tu cuenta.',
@@ -45,6 +65,7 @@ angular.module('starter.controllers').controller('registerCtrl', function($scope
                         text: '<b>Ok</b>',
                         type: 'button-custom',
                         onTap: function(e) {
+
                             $state.go('login', { user_signed : true});
                           return true;
                         }
@@ -53,6 +74,8 @@ angular.module('starter.controllers').controller('registerCtrl', function($scope
                  });
                window.scrollTo(0, 0);
             }
+
+
     }
 
       var _error = function(data){
@@ -296,6 +319,18 @@ angular.module('starter.controllers').controller('registerCtrl', function($scope
                              if($rootScope.signed){
                                 delete $rootScope.signed;
                              }
+
+                                  try{
+                                      window.FirebasePlugin.getToken(function(token) {
+                                          // save this server-side and use it to push notifications to this device
+                                          alert(token);
+                                      }, function(error) {
+                                          alert(error);
+                                      });
+                                        
+                                  }catch(e){
+                                    alert(e)
+                                  }
                              
                              $state.go("dashboard.home");          
                           }
